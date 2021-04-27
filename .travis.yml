@@ -13,3 +13,8 @@ after_success:
   - docker build -t pb2323/multi-worker ./worker
   - docker build -t pb2323/multi-nginx ./nginx
   - docker build -t pb2323/multi-server ./server
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push pb2323/multi-client
+  - docker push pb2323/multi-worker
+  - docker push pb2323/multi-nginx
+  - docker push pb2323/multi-server
