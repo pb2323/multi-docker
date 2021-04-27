@@ -1,0 +1,7 @@
+FROM node:alpine
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+RUN chmod ugo+rwx node_modules
+CMD ["npm","run","start"]
